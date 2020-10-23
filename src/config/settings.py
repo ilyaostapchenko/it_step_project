@@ -8,7 +8,7 @@ ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default=[])
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
