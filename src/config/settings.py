@@ -22,6 +22,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Third
+
+    # local
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -80,6 +85,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
 LANGUAGE_CODE = 'en-us'
