@@ -1,0 +1,60 @@
+{% extends '_base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="wrapper">
+        <div class="menu">
+          <div class="menu__top">
+            <img
+              class="menu__img"
+              src="{{user.profile.avatar.image.url}}"
+              alt=""
+            />
+            <div class="menu__name">{{ user }}</div>
+            <ul class="menu__links">
+              <a href="#"><li class="menu__link">Friends</li></a>
+              <a href="{% url 'core:my_posts' %}"><li class="menu__link">Posts</li></a>
+              <a href="{% url 'core:home' %}"><li class="menu__link">News</li></a>
+            </ul>
+          </div>
+          <ul class="menu__bottom">
+              
+              <a href="{% url 'users:settings' %}"><li class="menu__bottom_item">Settings</li></a>
+              <a href="{% url 'logout' %}"><li class="menu__bottom_item">Logout</li></a>
+        </ul>
+      </div>
+
+      <div class="settings__initial_data" style="
+      color: rgb(102, 4, 4);
+      display: flex;
+      flex-direction: column;">
+          <h1>First name: <b>{{ user.first_name }}</b></h1>
+          <h1>Last name: <b>{{ user.last_name }}</b></h1>
+      </div>
+
+      <div class="user__settings">
+        <form action="{% url 'users:settings' %}" method="post" class="user__settings_form">
+            {% csrf_token %}
+
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+
+            <button class="btn btn-primary" type="submit">Save</button>
+        </form>
+
+        <div class="messages badge badge-pill badge-danger">
+            {% if errors %}
+                {{ errors }}
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endblock content %}
+
+{% block not_auth %}
+{% endblock not_auth %}
